@@ -7,6 +7,8 @@ import { ReactiveFormsModule ,FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { EditTasksComponent } from './components/tasks/Create/edit-tasks/edit-tasks.component';  
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpHeaderInterceptor } from './interceptors/http-header.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,12 +18,18 @@ import { EditTasksComponent } from './components/tasks/Create/edit-tasks/edit-ta
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+    { 
+      provide: HTTP_INTERCEPTORS, 
+      useClass: HttpHeaderInterceptor, 
+      multi: true 
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,8 +6,18 @@ import { Injectable } from '@angular/core';
 })
 export class GenericService {
 
-  constructor() { }
-  getTasks(){}
-  addTask(){}
-  editTask(){}
+  constructor(public http:HttpClient) { }
+  get(path:string){
+    return this.http.get(path)
+  }
+  post(path:string,body:{}){
+   return this.http.post(path,body)
+  }
+
+  put(path:string,body:{}){
+    return this.http.put(path,body)
+   }
+   delete(path:string){
+    return this.http.delete(path)
+   }
 }

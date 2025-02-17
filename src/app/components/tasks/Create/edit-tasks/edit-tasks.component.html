@@ -1,6 +1,6 @@
 <section class="width">
     <form (ngSubmit)="onSubmit()">
-        <h2>{{ task.id === 0 ? 'Create Task' : 'Edit Task' }}</h2>
+        <h2>{{ task?.id === 0 ? 'Create Task' : 'Edit Task' }}</h2>
 
         <div class="input">
             <label for="title">Title:</label>
@@ -11,6 +11,16 @@
       <label for="description">Description:</label>
       <input type="text" [(ngModel)]="task.description" name="description" />
       </div>
+
+      <div class="input">
+        <label for="status">status:</label>
+        <input type="text" [(ngModel)]="task.status" name="status" />
+        </div>
+
+        <div class="input">
+            <label for="dueDate">dueDate:</label>
+            <input type="date" [(ngModel)]="task.dueDate" name="dueDate" />
+            </div>
     
       <button type="submit">Submit</button>
     </form>
