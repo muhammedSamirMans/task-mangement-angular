@@ -3,14 +3,22 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { ReactiveFormsModule ,FormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { TasksComponent } from './components/tasks/tasks.component';
+import { EditTasksComponent } from './components/tasks/Create/edit-tasks/edit-tasks.component';  
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    TasksComponent,
+    EditTasksComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration(withEventReplay())
